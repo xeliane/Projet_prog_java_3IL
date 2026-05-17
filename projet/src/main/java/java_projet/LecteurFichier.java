@@ -1,47 +1,46 @@
 package projet_java;
-
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.Scanner;
 
+/**
+ * Classe utilitaire dédiée à la lecture et l'affichage des fichiers textes de l'histoire.
+ */
 public class LecteurFichier {
-
-    // Méthode pour lire un fichier texte phrase par phrase
+    
+    /**
+     * Lit un fichier texte et l'affiche phrase par phrase pour rendre la lecture agréable.
+     * param cheminFichier L'emplacement du fichier (ex: "chapitre/chapitre1.txt").
+     * param scanner Le scanner partagé du programme pour détecter la touche Entrée.
+     */
     public static void lireTXTParPhrase(String cheminFichier, Scanner scanner) {
-        Path chemin = Paths.get(cheminFichier); // Convertit le String en chemin système
+        Path chemin = Paths.get(cheminFichier); // Transforme le chemin texte en objet Path
         
+        // Sécurité : vérifie que le fichier existe bien avant d'essayer de le lire
         if (!Files.exists(chemin)) {
-            System.out.println("Erreur : Le fichier est introuvable au chemin : " + cheminFichier);
+            System.out.println("[Histoire non disponible pour ce chapitre]");
             return;
         }
-
+        
         try {
-            // Lit le contenu complet du fichier en une seule chaîne
-            String texteComplet = Files.readString(chemin);
+            // Extrait l'intégralité du texte en une seule variable String
+            String texte = Files.readString(chemin);
             
-            // Divise le texte en un tableau de chaînes à chaque point
-            String[] phrases = texteComplet.split("\\.");
+            // Découpe le texte en un tableau de phrases. Le double anti-slash (\\) est 
+            // nécessaire car le point (.) est un caractère spécial en expression régulière.
+            String[] phrases = texte.split("\\.");
             
-            System.out.println("\n--- DÉBUT DE L'HISTOIRE ---");
-            System.out.println("(Appuyez sur ENTRÉE pour lire la suite...)\n");
-            
-            for (String phrase : phrases) {
-                String phraseNettoyee = phrase.trim(); // Supprime les retours à la ligne et espaces inutiles
-                
-                if (!phraseNettoyee.isEmpty()) {
-                    System.out.print(phraseNettoyee + "."); // Affiche la phrase avec son point
+            for (String p : phrases) {
+                // Ignore les phrases vides (causées par de multiples espaces ou points d'affilée)
+                if (!p.trim().isEmpty()) {
+                    System.out.print(p.trim() + "."); // Affiche la phrase et remet le point supprimé par le split
                     
-                    // Bloque l'exécution jusqu'à ce que l'utilisateur tape sur Entrée
+                    // Bloque l'exécution du programme jusqu'à ce que le joueur appuie sur Entrée
                     scanner.nextLine();
                 }
             }
-            
-            System.out.println("\n--- FIN DU CHAPITRE ---");
-            
         } catch (IOException e) {
-            System.out.println("Erreur lors de la lecture du fichier texte : " + e.getMessage());
+            System.out.println("Erreur lecture : " + e.getMessage());
         }
     }
 }
