@@ -47,34 +47,34 @@ La base de données relationnelle est générée automatiquement à l'exécution
   Bdd.java (Gestionnaire d'Accès aux Données / DAO)
     Encapsule toute la logique de persistance via JDBC.
 
-    Sécurité : Utilisation exclusive de PreparedStatement pour prévenir les injections SQL lors de la manipulation des données utilisateur.
+   Sécurité : Utilisation exclusive de PreparedStatement pour prévenir les injections SQL lors de la manipulation des données utilisateur.
 
-    Fonctionnalités clés :
+   Fonctionnalités clés :
 
-    creerTableSiInexistante() : Initialise le schéma et gère les mises à jour silencieuses (ex: ALTER TABLE).
+   creerTableSiInexistante() : Initialise le schéma et gère les mises à jour silencieuses (ex: ALTER TABLE).
 
-    ajouterUtilisateur() / verifierUtilisateur() : Gestion de l'authentification.
+   ajouterUtilisateur() / verifierUtilisateur() : Gestion de l'authentification.
 
-    sauvegarderProgression() : Met à jour la table utilisateurs avec les PV, la position et la force accumulée.
+   sauvegarderProgression() : Met à jour la table utilisateurs avec les PV, la position et la force accumulée.
 
-    recupererChoix() : Requête les embranchements disponibles pour un ID de chapitre donné.
+   recupererChoix() : Requête les embranchements disponibles pour un ID de chapitre donné.
 
   Utilisateur.java (Modèle de Données / POJO)
     Représente l'état du joueur en mémoire vive.
 
-    Gère le capital santé (pv) et vérifie les conditions de survie (estEnVie()).
+   Gère le capital santé (pv) et vérifie les conditions de survie (estEnVie()).
 
-    Intègre la logique métier lors de l'instanciation (Création de compte) : attribution aléatoire de 3 pouvoirs répartis dans 3 catégories de rareté distinctes, avec gestion d'une exception interactive (le pouvoir
+   Intègre la logique métier lors de l'instanciation (Création de compte) : attribution aléatoire de 3 pouvoirs répartis dans 3 catégories de rareté distinctes, avec gestion d'une exception interactive (le pouvoir
     ID 6 "Au choix" requiert une saisie utilisateur).
 
-    Stocke la statistique accumulable forceBonus.
+   Stocke la statistique accumulable forceBonus.
 
   LecteurFichier.java (Utilitaire d'Affichage)
     Permet une narration immersive en rompant l'affichage en bloc.
 
-    Utilise l'API java.nio.file (Path, Files) pour lire les fichiers chapitreX.txt.
+   Utilise l'API java.nio.file (Path, Files) pour lire les fichiers chapitreX.txt.
 
-    Découpe le texte via la méthode String.split("\\.") et impose une pause dans l'exécution (attente de la touche Entrée) pour afficher chaque phrase l'une après l'autre.
+   Découpe le texte via la méthode String.split("\\.") et impose une pause dans l'exécution (attente de la touche Entrée) pour afficher chaque phrase l'une après l'autre.
 
 5. Mécaniques Métier Spécifiques
   Calcul des Dégâts : Lors d'une attaque, les dégâts du joueur sont calculés selon la formule suivante : Lancer de dé (1 à 6) + Somme des bonus de force des 3 pouvoirs (via requête SQL) + Force bonus gagnée en jeu.
