@@ -59,7 +59,7 @@ La base de données relationnelle est générée automatiquement à l'exécution
 
    recupererChoix() : Requête les embranchements disponibles pour un ID de chapitre donné.
 
-  Utilisateur.java (Modèle de Données / POJO)
+  Utilisateur.java (Modèle de Données / POO)
     Représente l'état du joueur en mémoire vive.
 
    Gère le capital santé (pv) et vérifie les conditions de survie (estEnVie()).
