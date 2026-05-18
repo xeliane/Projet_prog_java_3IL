@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Modèle de données (POJO) représentant un joueur, ses caractéristiques et ses pouvoirs.
+ * Modèle de données (POO) représentant un joueur, ses caractéristiques et ses pouvoirs.
  * Permet de manipuler le joueur en mémoire vive sans faire de requêtes SQL permanentes.
  */
 public class Utilisateur {
