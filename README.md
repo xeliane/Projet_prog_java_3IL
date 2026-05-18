@@ -5,7 +5,12 @@ Le code se trouve dans
     Projet -> src/main/java/projet_java
   
 L'histoire se trouve dans  
-    Projet -> Chapitres
+    Projet -> Chapitres/
 
 Le planning initial, planning final et la video de presentation sont dans  
     Projet -> liens_externes
+
+La documentation technique et la documentation fonctionnel sont dans  
+    Projet -> doc/
+
+Pour lancer le jeu il faut "RUN" le fichier Main.java
