@@ -9,5 +9,3 @@ L'histoire se trouve dans
 
 Le planning initial, planning final, documentation technique, la documentation fonctionnel et la video de presentation sont dans  
     Projet -> liens_externes
-
-Pour lancer le jeu il faut "RUN" le fichier Main.java dans un ide
